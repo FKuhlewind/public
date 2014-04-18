@@ -4,6 +4,11 @@
 
   <title>Florian</title>
 
+  <!-- 1. Load platform support before any code that touches the DOM. -->
+    <script src="bower_components/platform/platform.js"></script>
+    <!-- 2. Load the component using an HTML Import -->
+    <link rel="import" href="elements/flo-element.html">
+
 
   <script src="./plugs/jquery.js"></script>
   <script src="app.js"></script>
@@ -16,6 +21,13 @@
 <p>Wow, a homepage!</p>
 <p>It makes me happy to finally see it working...</p>
 <p>I am so delighted I want to add a second paragraph!</p>
+<ul>
+<li>one</li>
+<li>two</li>
+<li>three</li>
+</ul>
+
+<flo-element></flo-element>
 
 </body>
 </html>

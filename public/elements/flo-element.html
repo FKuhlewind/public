@@ -1,0 +1,13 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<polymer-element name="flo-element">
+  <template>
+    <span style="color: {{color}}">This is <b>{{owner}}</b>'s element. The whole thing is {{color}}</span>.
+  </template>
+  <script>
+    Polymer('flo-element', {
+      owner: "Florian Kuhlewind",
+      color: "green"
+    });
+  </script>
+</polymer-element>
