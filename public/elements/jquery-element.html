@@ -1,28 +1,16 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<script src="jquery.js"></script>
 
 
 <polymer-element name="jquery-element">
   <template>
-    <span style="color: {{color}}">This is <b id="elem">{{owner}}</b>'s element. The whole thing is {{color}}</span>.
+    <span id="elem" style="color: {{color}}">This is <b>{{owner}}</b>'s element. The whole thing is {{color}}</span>.
   </template>
   <script>
     Polymer('jquery-element', {
       owner: "Florian Kuhlewind",
       color: "green",
-      ready: function () {
-
-      	var elem = document.getElementById('elem');
-		elem.addEventListener('click', doSomething, false);
-
-		function doSomething() {
-
-			elem.parentNode.replaceChild(document.createTextNode("You Clicked Me!!!"), elem);
-
-			};
-
-      }
     });
-
   </script>
+  <script src="jquery-element.js"></script>
+
 </polymer-element>

@@ -18,6 +18,7 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "~0.2.2"
+    "polymer": "~0.2.2",
+    "polymer-ajax": "Polymer/polymer-ajax#~0.2.3"
   }
 }

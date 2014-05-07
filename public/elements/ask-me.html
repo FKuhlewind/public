@@ -1,0 +1,68 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/polymer-ajax/polymer-ajax.html">
+<link rel="import" href="../elements/show-picture.html"/>
+<link rel="import" href="../elements/chat-history.html"/>
+
+<polymer-element name="ask-me">
+  
+  <style type="text/css">
+      div {
+        float: left;
+        width: 300px;
+        height: 300px;
+      }
+      form {
+        width: 100%;
+      }
+      input {
+        width: 80%;
+      }
+      button {
+        width: 17%;
+      }
+      show-picture {
+        height: 300px;
+      }
+  </style>
+
+  <template>
+    <p class="elem">You can ask Florian anything you like, he knows the answer.</p>
+
+    <div>
+      <chat-history history="{{history}}"></chat-history>
+      <form on-submit="{{ askquestion }}">
+        <input autocomplete="off" id="textInput" class="text" value="{{question}}" placeholder="Your question..."></input>
+        <button type="submit">Ask</button>
+      </form>
+    </div>
+
+    <polymer-ajax url="{{apirequest}}" auto on-polymer-response="{{handleResponse}}" response="{{output}}" handleAs="json"></polymer-ajax>
+    <show-picture picture="{{picture}}"></show-picture>
+
+    <br><br><p>Florian: {{answer}}</p>
+
+  </template>
+
+  <script>
+    Polymer('ask-me', {
+      myname: "Florian",
+      answer: "...",
+      url: "https://ask.pannous.com/api?input=",
+      history: ["","","","","",""],
+      askquestion: function(e) {
+          this.apirequest = this.url + this.question;
+          e.preventDefault();     
+          },
+      handleResponse: function() {        
+          this.answer = this.output.output[0].actions.say.text;         
+          this.history.push("You: "+this.question);
+          this.history.push("Florian: "+this.output.output[0].actions.say.text);
+          this.history.shift();
+          this.history.shift();
+          this.question = "";
+          this.picture = this.output.output[0].actions.show.images[0];
+          },
+    });
+  </script>
+
+</polymer-element>

@@ -1,0 +1,37 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<polymer-element name="chat-history" attributes="history" noscript>
+
+	<style type="text/css">
+		.box {
+			width: 300px;
+			height: 300px;
+			border: 1px solid black;
+			overflow: auto;
+		}
+		span:nth-child(odd) {
+			color: black;
+		}
+		span:nth-child(even) {
+			color: gray;
+			font-style: italic; 
+		}
+		span:last-child {
+			color: blue;
+		}
+		p {
+			margin: 15px;
+		}
+	</style>
+
+	<template>
+		<div class="box" id="box">
+			<div class="inside">
+				<template repeat="{{ item in history }}">
+        				<span><p>{{item}}</p></span>
+        		</template>
+        	</div>
+		</div>
+	</template>
+
+</polymer-element>
